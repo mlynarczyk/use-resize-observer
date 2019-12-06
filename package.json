@@ -1,5 +1,5 @@
 {
-  "name": "happy-intersection-observer",
+  "name": "react-resize-observer",
   "version": "0.0.1",
   "engines": {
     "node": ">=8.10.0"
@@ -9,6 +9,8 @@
     "start": "start-storybook",
     "format": "node_modules/.bin/prettier --config .prettierrc \"**/*.{js,jsx,ts,tsx,md}\" --write",
     "format-test": "node_modules/.bin/prettier --config .prettierrc \"**/*.{js,jsx,ts,tsx,md}\" --check",
+    "tsc": "tsc --noEmit",
+    "build": "tsc",
     "lint": "eslint . --cache --ext js,ts,ts,tsx",
     "lint-fix": "npm run lint -- --fix",
     "test": "jest"
@@ -31,8 +33,9 @@
   "author": "Mac Mlynarczyk",
   "description": "React component with an intersection observer, written in typescript.",
   "dependencies": {
-    "react": "16.10.2",
-    "react-dom": "16.10.2"
+    "react": "16.12.0",
+    "react-dom": "16.10.2",
+    "resize-observer-polyfill": "1.5.1"
   },
   "devDependencies": {
     "@babel/core": "7.6.4",
