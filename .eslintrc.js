@@ -81,10 +81,10 @@ module.exports = {
 
     // react-hooks
     'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
 
     // filenames
     'filenames/match-exported': [2, null, null, true],
-    'filenames/no-index': 2,
 
     // promise
     'promise/always-return': 'off',
@@ -124,7 +124,7 @@ module.exports = {
       {
         devDependencies: false,
         optionalDependencies: false,
-        peerDependencies: false,
+        peerDependencies: true,
       },
     ],
 
@@ -135,17 +135,13 @@ module.exports = {
     {
       files: '{src}/**/*.{ts,tsx}',
       rules: {
-        'filenames/match-regex': [
-          2,
-          '^[A-z0-9]+(\\.(test|stories|style|types))*$',
-          false,
-        ],
+        'filenames/match-regex': [2, '^[A-z0-9]+(\\.(tests|stories))*$', false],
       },
     },
     // Allow for devDependencies to be imported
     // in the project config, story and test files
     {
-      files: ['.storybook/**', '**/*.stories.*', '**/*.test.*'],
+      files: ['.storybook/**', '**/*.stories.*', '**/*.tests.*'],
       rules: {
         'import/no-extraneous-dependencies': [
           'error',

@@ -1,9 +1,10 @@
 {
-  "name": "react-resize-observer",
-  "version": "0.0.1",
+  "name": "@mlynarczyk/use-resize-observer",
+  "version": "0.0.6",
   "engines": {
     "node": ">=8.10.0"
   },
+  "main": "./dist/index.js",
   "scripts": {
     "preinstall": "node -e 'if(!/yarn\\.js$/.test(process.env.npm_execpath))throw new Error(\"This project uses Yarn.\")'",
     "start": "start-storybook",
@@ -13,7 +14,10 @@
     "build": "tsc",
     "lint": "eslint . --cache --ext js,ts,ts,tsx",
     "lint-fix": "npm run lint -- --fix",
-    "test": "jest"
+    "test": "jest",
+    "prepare":"yarn build",
+    "prepublishOnly" : "yarn lint && yarn tsc --noEmit",
+    "postversion": "git push && git push --tags"
   },
   "husky": {
     "hooks": {
@@ -31,11 +35,13 @@
   },
   "license": "ISC",
   "author": "Mac Mlynarczyk",
-  "description": "React component with an intersection observer, written in typescript.",
+  "description": "A react hook written in typescript, convenient wrapper for ResizeObserver.",
   "dependencies": {
-    "react": "16.12.0",
-    "react-dom": "16.10.2",
-    "resize-observer-polyfill": "1.5.1"
+    "resize-observer-polyfill": "1.5.1",
+    "use-raf-debounced-value": "0.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/core": "7.6.4",
@@ -66,8 +72,10 @@
     "jest": "24.9.0",
     "lint-staged": "10.0.0-0",
     "prettier": "1.18.2",
+    "react": "16.12.0",
     "react-docgen-typescript-loader": "3.3.0",
-    "react-test-renderer": "16.11.0",
+    "react-dom": "16.12.0",
+    "react-test-renderer": "16.12.0",
     "typescript": "3.6.4"
   }
 }

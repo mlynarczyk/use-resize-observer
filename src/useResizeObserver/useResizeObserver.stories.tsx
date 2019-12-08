@@ -1,19 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { useResizeObserver } from './useResizeObserver';
-import { useThrottledResizeObserver } from '../useThrottledResizeObserver/useThrottledResizeObserver';
+import { useDebouncedResizeObserver } from '../useDebouncedResizeObserver/useDebouncedResizeObserver';
 
 storiesOf('useResizeObserver', module).add('Default', () => {
-  const { setReference, height, width } = useResizeObserver();
-  const {
-    setReference: setReference2,
-    height: height2,
-    width: width2,
-  } = useResizeObserver();
+  const [{ setReference, height, width }] = useResizeObserver();
+  const [
+    { setReference: setReference2, height: height2, width: width2 },
+  ] = useResizeObserver();
 
-  const three = useThrottledResizeObserver();
-
-  console.log('result:', three.width, three.height);
+  const [three] = useDebouncedResizeObserver();
 
   return (
     <React.Fragment>

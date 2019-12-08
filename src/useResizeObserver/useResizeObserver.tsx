@@ -37,14 +37,16 @@ export const useResizeObserver = () => {
 
       reference.current = element;
     },
-    [reference],
+    [reference, callback],
   );
 
   return useMemo(
-    () => ({
-      setReference,
-      ...state,
-    }),
-    [setReference, state.dimensionsDetected, state.height, state.width],
+    () => [
+      {
+        setReference,
+        ...state,
+      },
+    ],
+    [setReference, state],
   );
 };

@@ -1,3 +1,5 @@
+const { presets } = require('../babel.config');
+
 module.exports = ({ config }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
@@ -5,7 +7,7 @@ module.exports = ({ config }) => {
       {
         loader: require.resolve('babel-loader'),
         options: {
-          presets: [['react-app', { flow: false, typescript: true }]],
+          presets,
         },
       },
       {

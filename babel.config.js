@@ -3,7 +3,7 @@ module.exports = function(api) {
 
   const presets = [
     ['@babel/preset-env', { targets: { node: 'current' } }],
-    '@babel/preset-react',
+    ['@babel/preset-react', { flow: false, typescript: true }],
     '@babel/preset-typescript',
   ];
 
